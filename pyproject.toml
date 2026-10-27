@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ctrlz"
+version = "0.1.0"
+description = "Undo anything: automatic local snapshots of your project, so you can rewind what an AI agent (or you) broke."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Rishit Patel" }]
+keywords = ["undo", "snapshots", "git", "ai agents", "claude code", "cursor", "time machine", "developer tools"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Environment :: Console",
+    "Topic :: Software Development :: Version Control",
+    "Intended Audience :: Developers",
+]
+dependencies = ["watchdog>=4", "rich>=13"]
+
+[project.optional-dependencies]
+ui = ["textual>=0.80"]
+dev = ["pytest>=7", "textual>=0.80"]
+
+[project.scripts]
+ctrlz = "ctrlz.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
